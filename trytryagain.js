@@ -40,50 +40,50 @@ function view(products) { //products is array inventory
         console.log(product[0] + " " + product[1] + " (" + product[2] + ") $" + product[3]);
     }
 }
-let i;
-let index;
 
-function update(inventory, sku)
+function update(inventory)
 {
-    sku = parseInt(window.prompt('enter sku number of product you would like to update'));
+    let i;
+    let index = -1;
+
+    let sku = parseInt(window.prompt('enter sku number of product you would like to update'));
     for (i = 0; i < inventory.length; i++) 
     {
-    //i < inventory.length - which refers to 5 (indexes 0,1,2,3,4)
-                // console.log(inventory[i]);
-                //returns nested array lists
-
-                // console.log(sku);
-                //returns 123
-
-        index = inventory[i].indexOf(sku); 
-                // console.log(inventory[i]);
-                //returns nested array lists
-
-                // console.log(index); 
-                //returns -1
-
-                // console.log(sku);
-                //returns 123
-
-                // console.log(inventory[i].indexOf(sku));
-                //returns -1
-
+        if (inventory[i][0] == sku)
+            index = i;
+    }
         if (index > -1) 
         { 
-            products = i; 
-            product = index; 
+            let qty = parseInt(window.prompt('new inventory amount?'));
+            //to verify input is a number:
+            if (isNaN(qty)) //THIS IS NOT WORKING!!! WHY??
+            {
+                window.prompt('that ain\'t a number!')//THIS IS NOT WORKING!!! WHY??
+            }
+            else
+            {
+                inventory[index][2] = qty;
+                view(inventory);
+            }
         }
-    }
-    let qty = parseInt(window.prompt('how many would you like?'));
-    inventory[products][product + 2] = qty;
 }
-
-
+// let qty = parseInt(window.prompt('new inventory amount?'));
+// // TODO: validate input: no text, no negatives
+// inventory[index][2] = qty;
+// view(inventory);
+// }
+// }
 
 
 function main () 
 {
-    let inventory = [['123', 'collar', 1, 5.99],['456', 'leash', 2, 6.99], ['789', 'bowl', 4, 3.99], ['321', 'toy', 6, 1.99],['654', 'bone', 8, 2.99]];
+    // let inventory = [
+    //     ['123', 'collar', 1, 5.99],
+    //     ['456', 'leash', 2, 6.99], 
+    //     ['789', 'bowl', 4, 3.99], 
+    //     ['321', 'toy', 6, 1.99],
+    //     ['654', 'bone', 8, 2.99]
+    // ];
 
     let command;
 
