@@ -119,7 +119,46 @@ function main ()
 }
 main();
 
+//localstorage
 
+// localStorage.setItem('invList', inventory);
+// localStorage.setItem('inventoryList', JSON.stringify(inventory));
+// const qtyValue = localStorage.getItem('inventoryList');
+// if (qtyValue == JSON.parse(qtyValue)) {
+//     console.log(qtyValue);
+// }
 
-//****************************** */
+// window.onLoad = function() {
+//     const localStorage = window.localStorage;
 
+//     for (let s = 0; s < localStorage.length; s++) {
+//         const key = localStorage.key(i);
+//         const value = localStorage.getItem(key);
+//     }
+// }
+
+function localStore() {
+    window.localStorage.setItem('dataStore', JSON.stringify(inventory));
+}
+
+function localGet() 
+{
+    return JSON.parse(window.localStorage.getItem('dataStore'));
+}
+// let run = true;
+
+// window.addEventListener('load', () => 
+// {
+//     let storage, command;
+
+//     displayMenu();
+//     storage = localGet();
+
+//     if (storage.length === 0) 
+//     {
+//         localStore();
+//     } else 
+//     {
+//         console.log("heere you are")
+//     }
+// })
