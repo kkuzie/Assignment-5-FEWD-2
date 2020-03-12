@@ -126,42 +126,30 @@ let chickFlicks = ['a lot like love', 'ps i love you', 'the notebook', 'how to l
 chickFlicks = chickFlicks.shift();
 console.log(chickFlicks);
 
-//STEP 12 NOT DONE
+//STEP 12 
 // Programmatically retrieve the movies in your array that you do not like and return their indices. Then, using those indices, programmatically add movies that you do like. 
 
 let bradPittFilms = ['fight club', 'benjamin button', 'troy', 'thelma and louise', 'moneyball', 'meet joe black', 'legends of the fall'];
 let ehFilms = ['for colored girls', 'tinker tailor soldier spy', 'the american'];
 
-let goodBad = bradPittFilms.concat(ehFilms);
-goodBad.sort();
+let goodnBad = bradPittFilms.concat(ehFilms);
+goodnBad.sort();
 
-    console.log('List of movies: ' + ("<br>"));
-    for (one in goodBad) {
-    console.log(goodBad[one] + "<br>");
+window.document.write('List to choose from' + "<br><br>");
+for (one in goodnBad) {
+    window.document.write(goodnBad[one] + "<br>");
+}
+
+let choice = window.prompt('From list, which movie was BAD?');
+let store = goodnBad.indexOf(choice);
+let replace = window.prompt('name a GOOD movie to replace that bad one!')
+
+
+goodnBad[store] = replace;
+window.document.write('<br> Ah, a BETTER list of movies: ' + '<br><br>');
+    for (one in goodnBad) {
+        window.document.write(goodnBad[one] + "<br>");
     }
-
-
-
-// let goodMovies = ["The Jungle", "The Big Lebowski", "11/22/63", "Employee of the Month", "Shawn of the Dead", "Super Troopers", "Beer Fest"];
-// let badMovies = ["Dune", "Attack of the 50' Woman", "Devil's Rejects"];
-// let movies = badMovies.concat(goodMovies);
-// let choice;
-// let store;
-// let replace;
-
-// for (a in movies) {
-//     window.document.write(movies[a]+"<br>");
-// }
-//  choice = window.prompt("Select from the list a movie you did not like.");
-//  store = movies.indexOf(choice)
-//  replace = window.prompt("Add a movie in it's place that you do like. ");
-
-//  movies[store] = replace;
-//  window.document.write("<br><br>The new list is: <br>");
-
-//  for (a in movies) {
-//     window.document.write(movies[a]+"<br>");
-// }
 
 //STEP 13 
 // Create two associative arrays called employee1 and employee2 respectively. Each array should have an employeeid, name, title, department, and whether or not the employee is a current employee of the company. Now, add both of those associative arrays to a new array called employees. Then, programmatically display the name of the second employee within a console window.
@@ -188,7 +176,7 @@ for (employee in employees) {
 
 console.log(employee2['name']);
 
-//STEP 14 NOT DONE 
+//STEP 14 
 // Copy the code from step 13. Modify the code slightly so that you’re using a loop to iterate through the array and print out the names of both employees.
 
 let workerA = [];
@@ -205,9 +193,9 @@ workerB['department'] = '';
 workerB['current'] = true;
 
 // why doesnt this display array list??
-let worker;
-let workers = workerA.concat(workerB);
-console.log(workers);//returns []
+// let worker;
+// let workers = workerA.concat(workerB);
+// console.log(workers);//returns []
 
 // for (worker in workers) {
 //     console.log(workers[worker.name]); //nothing
@@ -225,7 +213,11 @@ console.log(workers);//returns []
 // }
 // console.log(workers['name']); //undefined
 
-
+let w;
+let workers = [[workerA], [workerB]];
+for (w = 0; w < workers.length; w++) {
+    console.log(workers[w][0]['name']);
+}
 
 //STEP 15
 // Copy the code from step 14. Now add a third employee and set his employment status to false. Then, programmatically loop through the array but don’t display an employee if they aren’t a current employee of the company. Basically, only the first two should appear in the console window.
@@ -236,11 +228,3 @@ console.log(workers);//returns []
 //STEP 17
 // Create a string array called employees using literal notation and populate the array with several employee names. Then, create an anonymous function called showEmployee. The function should accept a parameter. Call this function, passing in the employees array into the function as a parameter. Make sure to display the result in the console window. Within the function, loop through the passed in array and display the result so that it looks exactly like this in the console window:Employees: ZAK JESSICA MARK FRED SALLY
 
-//STEP 18
-// Write a JavaScript function to filter false, null, 0 and blank values from an array.Test Data: window.console.log(filterValues([58, '', 'abcd', true, null, false, 0]));Expected Result: [58, "abcd", true]
-
-//STEP 19
-// Write a JavaScript function to get a random item from an array. So if I create a numeric array with 10 numbers and then pass that array into my function, the function should randomly return one of those numbers.
-
-//STEP 20
-// Write a JavaScript function to get the largest number from a numeric array.
