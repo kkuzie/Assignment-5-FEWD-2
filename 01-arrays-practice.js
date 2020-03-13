@@ -355,4 +355,3 @@ console.log(something(things));
 let myArray = Math.max(6, 12, 3, 7, 2000);
 console.log(myArray); 
 
-
