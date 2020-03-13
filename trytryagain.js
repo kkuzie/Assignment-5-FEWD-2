@@ -23,23 +23,15 @@ window.console.log('exit - leave the store');
 window.console.log('');
 }
 
-let inventory = [
-    [123, 'collar', 1, 5.99],
-    [456, 'leash', 2, 6.99], 
-    [789, 'bowl', 4, 3.99], 
-    [321, 'toy', 6, 1.99],
-    [654, 'bone', 8, 2.99]
-];
 
-   
 let product;
 let products;
-
 function view(products) { //products is array inventory
     for (product of products) {
         console.log(product[0] + " " + product[1] + " (" + product[2] + ") $" + product[3]);
     }
 }
+
 
 function update(inventory)
 {
@@ -56,13 +48,15 @@ function update(inventory)
         { 
             let qty = parseInt(window.prompt('new inventory amount?'));
             //to verify input is a number:
-            if (isNaN(qty)) //THIS IS NOT WORKING!!! WHY??
+            if (isNaN(qty)) 
             {
-                window.prompt('that ain\'t a number!')//THIS IS NOT WORKING!!! WHY??
+                window.prompt('that ain\'t a number, thickie!')
             }
             else
             {
                 inventory[index][2] = qty;
+                localStorage.invList = inventory.join('|'); //this converts inventory array to a string
+                // console.log(localStorage.invList);//shows the new inventory as a string
                 view(inventory);
             }
         }
@@ -73,18 +67,42 @@ function update(inventory)
 // view(inventory);
 // }
 // }
-
+function getInventory()
+{
+    let storage;
+    let inventory;
+    storage = localStorage.getItem('invList') || ''; 
+        if (storage.length > 0)
+        {
+            inventory = storage.split('|');//looks for | and reverses the join so makes it back to array
+            for (i in inventory) 
+            {
+                inventory[i] = inventory[i].split(',');//converted the nested strings back into 5 arrays
+            }
+            for (i in inventory)
+            {
+                inventory[i][0] = Number(inventory[i][0]);//converts strings with numbers into Number not a String
+                inventory[i][2] = Number(inventory[i][2]);
+                inventory[i][3] = Number(inventory[i][3]);
+            }
+            console.log(inventory);
+        } 
+        else
+        {
+            inventory = [
+            [123, 'collar', 1, 5.99],
+            [456, 'leash', 2, 6.99], 
+            [789, 'bowl', 4, 3.99], 
+            [321, 'toy', 6, 1.99],
+            [654, 'bone', 8, 2.99]
+            ];
+        }
+    return inventory;
+}
 
 function main () 
 {
-    // let inventory = [
-    //     ['123', 'collar', 1, 5.99],
-    //     ['456', 'leash', 2, 6.99], 
-    //     ['789', 'bowl', 4, 3.99], 
-    //     ['321', 'toy', 6, 1.99],
-    //     ['654', 'bone', 8, 2.99]
-    // ];
-
+    let inventory = getInventory();
     let command;
 
     displayMenu();
@@ -137,14 +155,14 @@ main();
 //     }
 // }
 
-function localStore() {
-    window.localStorage.setItem('dataStore', JSON.stringify(inventory));
-}
+// function localStore() {
+//     window.localStorage.setItem('dataStore', JSON.stringify(inventory));
+// }
 
-function localGet() 
-{
-    return JSON.parse(window.localStorage.getItem('dataStore'));
-}
+// function localGet() 
+// {
+//     return JSON.parse(window.localStorage.getItem('dataStore'));
+// }
 // let run = true;
 
 // window.addEventListener('load', () => 
